@@ -2,7 +2,12 @@
 *.pyc
 __pycache__/
 scripts/last_run_prepared
+scripts/datasets
 scripts/test.py
+scripts/mlruns
+scripts/outputs
+scripts/wandb
+scripts/yml_config
 *.py[cod]
 *$py.class
 
@@ -217,3 +222,10 @@ secrets.json
 wandb/
 mlruns/
 tensorboard_logs/
+scripts/examples/
+scripts/run_py
+scripts/models
+scripts/test_data
+examples/
+scripts/run*.sh
+run_docker.sh

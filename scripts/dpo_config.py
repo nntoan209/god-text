@@ -1,43 +1,44 @@
-from copy import deepcopy
 from model_utility import get_model_architecture, get_model_num_params, get_use_liger, disable_flash_attention, get_gradient_checkpointing, get_gpu_count
+from copy import deepcopy
 
+tuned_ratio = 0.8
 
 DPO_CONFIG = {
     "0_1_b": {
-        "lr": 1.35e-5,
+        "lr": 1e-5,
         "distributed": "ddp",
         "gpu_count": 1,
         "batch_size": 16,
     },
     "1_2_b": {
-        "lr": 8.7e-6,
+        "lr": 1e-5,
         "distributed": "ddp",
         "gpu_count": 1,
         "batch_size": 12,
     },
     "2_4_b": {
-        "lr": 6.5e-6,
+        "lr": 8e-6,
         "distributed": "ddp",
         "gpu_count": 2,
         "batch_size": 12,
         "use_lora": True
     },
     "4_5_b": {
-        "lr": 6.25e-6,
+        "lr": 1e-5,
         "distributed": "ddp",
         "gpu_count": 4,
         "batch_size": 12,
         "use_lora": True
     },
     "5_9_b": {
-        "lr": 7.5e-6,
+        "lr": 2e-5,
         "distributed": "ddp",
         "gpu_count": 4,
         "batch_size": 8,
         "use_lora": True
     },
     "9_12_b": {
-        "lr": 5e-6,
+        "lr": 1.5e-5,
         "distributed": "ds",
         "gpu_count": 4,
         "use_lora": True,
@@ -45,7 +46,7 @@ DPO_CONFIG = {
         "gradient_checkpointing": False
     },
     "12_14_b": {
-        "lr": 8.5e-6,
+        "lr": 1e-5,
         "distributed": "ds",
         "gpu_count": 4,
         "use_lora": True,
@@ -80,6 +81,7 @@ DPO_CONFIG = {
 
 for key in DPO_CONFIG:
     DPO_CONFIG[key]["label"] = key
+    DPO_CONFIG[key]["lr"] = DPO_CONFIG[key]["lr"] * tuned_ratio
     
 
 def get_config(param_nums: int) -> dict:

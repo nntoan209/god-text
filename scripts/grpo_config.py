@@ -1,17 +1,19 @@
-from copy import deepcopy
 from model_utility import get_model_architecture, get_model_num_params, get_use_liger, disable_flash_attention, get_use_vllm, get_gradient_checkpointing, get_gpu_count
+from copy import deepcopy
 
+
+tuned_ratio = 0.8
 
 GRPO_CONFIG = {
     "0_1_b": {
-        "lr": 0.00015,
+        "lr": 0.0002,
         "distributed": "ddp",
         "gpu_count": 1,
         "batch_size": 40,
         "vllm_gpu_memory_utilization": 0.4
     },
     "1_2_b": {
-        "lr": 7.5e-5,
+        "lr": 9.9e-5,
         "distributed": "ddp",
         "gpu_count": 1,
         "batch_size": 40,
@@ -98,6 +100,7 @@ GRPO_CONFIG = {
 
 for key in GRPO_CONFIG:
     GRPO_CONFIG[key]["label"] = key
+    GRPO_CONFIG[key]["lr"] = GRPO_CONFIG[key]["lr"] * tuned_ratio
 
 
 def if_contain_slow_reward_function(dataset_type: dict) -> bool:

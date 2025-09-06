@@ -233,3 +233,12 @@ def resize_if_needed(model_name, model, token_nums):
 def init_wandb(train_request: Dict):
     # set wandb_mode=offline; do not upload the data to wandb export WANDB_MODE=offline
     return True
+    task_id = train_request["task_id"]
+    expected_repo_name = train_request["expected_repo_name"]
+    os.environ["WANDB_MODE"] = "offline"
+    os.environ["WANDB_DIR"] = train_request["wandb_log_dir"]
+    os.environ["WANDB_RUN_ID"] = f"{task_id}_{expected_repo_name}"
+    os.environ["WANDB_NAME"] = f"{task_id}_{expected_repo_name}"
+    if is_main_process(LOCAL_RANK):
+        os.makedirs(train_request["wandb_log_dir"], exist_ok=True)
+    return True

@@ -1,6 +1,8 @@
-from copy import deepcopy
 from model_utility import get_model_architecture, get_model_num_params, get_use_liger, disable_flash_attention, get_data_size, get_gpu_count
+from copy import deepcopy
 
+
+tuned_ratio = 0.8
 
 FIXED_BS_CONFIG = {
     "EleutherAI/gpt-neo-1.3B": {"batch_size": 36},
@@ -27,25 +29,25 @@ INSTRUCT_CONFIG = {
         "batch_size": 100,
     },
     "2_4_b": {
-        "lr": 7.5e-5,
+        "lr": 8e-5,
         "distributed": "ddp",
         "gpu_count": 1,
         "batch_size": 48,
     },
     "4_5_b": {
-        "lr": 7e-5,
+        "lr": 6.5e-5,
         "distributed": "ddp",
         "gpu_count": 2,
         "batch_size": 40,
     },
     "5_9_b": {
-        "lr": 3.5e-5,
+        "lr": 5.5e-5,
         "distributed": "ddp",
         "gpu_count": 2,
         "batch_size": 28,
     },
     "9_12_b": {
-        "lr": 1e-4,
+        "lr": 1.2e-4,
         "distributed": "ddp",
         "gpu_count": 2,
         "use_lora": True,
@@ -76,6 +78,7 @@ INSTRUCT_CONFIG = {
 
 for key in INSTRUCT_CONFIG:
     INSTRUCT_CONFIG[key]["label"] = key
+    INSTRUCT_CONFIG[key]["lr"] = INSTRUCT_CONFIG[key]["lr"] * tuned_ratio
     
 
 def get_instruct_config(param_nums: int) -> dict:
