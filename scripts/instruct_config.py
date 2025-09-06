@@ -18,7 +18,7 @@ INSTRUCT_CONFIG = {
         "lr": 0.0001,
         "distributed": "ddp",
         "gpu_count": 1,
-        "batch_size": 140,
+        "batch_size": 128,
         "use_lora": False
     },
     "1_2_b": {
@@ -26,7 +26,7 @@ INSTRUCT_CONFIG = {
         "distributed": "ddp",
         "gpu_count": 1,
         "use_lora": False,
-        "batch_size": 100,
+        "batch_size": 96,
     },
     "2_4_b": {
         "lr": 8e-5,
@@ -38,13 +38,13 @@ INSTRUCT_CONFIG = {
         "lr": 6.5e-5,
         "distributed": "ddp",
         "gpu_count": 2,
-        "batch_size": 40,
+        "batch_size": 32,
     },
     "5_9_b": {
         "lr": 5.5e-5,
         "distributed": "ddp",
         "gpu_count": 2,
-        "batch_size": 28,
+        "batch_size": 24,
     },
     "9_12_b": {
         "lr": 1.2e-4,
@@ -58,14 +58,14 @@ INSTRUCT_CONFIG = {
         "distributed": "ds",
         "gpu_count": 4,
         "use_lora": True,
-        "batch_size": 30,
+        "batch_size": 24,
     },
     "15_40_b": {
         "lr": 8e-5,
         "distributed": "ds",
         "gpu_count": 4,
         "use_lora": True,
-        "batch_size": 18,
+        "batch_size": 16,
     },
     "40_80_b": {
         "lr": 8e-5,

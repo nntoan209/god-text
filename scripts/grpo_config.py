@@ -23,7 +23,7 @@ GRPO_CONFIG = {
         "lr": 8e-5,
         "distributed": "ddp",
         "gpu_count": 2,
-        "batch_size": 42,
+        "batch_size": 40,
         "vllm_gpu_memory_utilization": 0.35,
         "use_lora": True
     },
@@ -31,7 +31,7 @@ GRPO_CONFIG = {
         "lr": 8e-5,
         "distributed": "ddp",
         "gpu_count": 2,
-        "batch_size": 42,
+        "batch_size": 40,
         "use_lora": True,
         "vllm_gpu_memory_utilization": 0.4
     },
@@ -39,7 +39,7 @@ GRPO_CONFIG = {
         "lr": 6e-5,
         "distributed": "ddp",
         "gpu_count": 2,
-        "batch_size": 42,
+        "batch_size": 40,
         "use_lora": True,
         "vllm_gpu_memory_utilization": 0.4
     },

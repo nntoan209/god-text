@@ -58,7 +58,7 @@ DPO_CONFIG = {
         "distributed": "ds",
         "gpu_count": 8,
         "use_lora": True,
-        "batch_size": 18,
+        "batch_size": 16,
         "gradient_checkpointing": False
     },
     "15_40_b": {
